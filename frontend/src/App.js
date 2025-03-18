@@ -1,17 +1,20 @@
 import React, { useState } from "react";
+import "./RecipeRecommender.css"; // Importing the CSS file
 
 const RecipeRecommender = () => {
     const [ingredients, setIngredients] = useState("");
     const [cuisine, setCuisine] = useState("");
+    const [diet, setDiet] = useState("");  
     const [recipes, setRecipes] = useState([]);
     const [selectedRecipe, setSelectedRecipe] = useState(null);
+    const [darkMode, setDarkMode] = useState(false);
 
     const handleSearch = async () => {
         try {
             const response = await fetch("http://127.0.0.1:5000/recommend", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ingredients, cuisine }),
+                body: JSON.stringify({ ingredients, cuisine, diet }),
             });
 
             const data = await response.json();
@@ -26,56 +29,69 @@ const RecipeRecommender = () => {
     };
 
     return (
-        <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
-            <h1>Recipe Recommender</h1>
-
-            {/* Input for Ingredients */}
-            <input
-                type="text"
-                placeholder="Enter ingredients (comma-separated)..."
-                value={ingredients}
-                onChange={(e) => setIngredients(e.target.value)}
-                style={{ padding: "10px", width: "250px", marginRight: "10px" }}
-            />
-
-            {/* Input for Cuisine Type */}
-            <input
-                type="text"
-                placeholder="Enter cuisine (optional)..."
-                value={cuisine}
-                onChange={(e) => setCuisine(e.target.value)}
-                style={{ padding: "10px", width: "250px", marginRight: "10px" }}
-            />
-
-            {/* Search Button */}
-            <button onClick={handleSearch} style={{ padding: "10px 20px", cursor: "pointer" }}>
-                Search
+        <div className={`container ${darkMode ? "dark" : "light"}`}>
+            {/* Dark Mode Toggle Button */}
+            <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+                {darkMode ? "☀ Light Mode" : "🌙 Dark Mode"}
             </button>
 
-            {/* Recipe List */}
-            <ul style={{ listStyle: "none", padding: 0, marginTop: "20px" }}>
+            <h1 className="title">Recipe Recommender</h1>
+
+            <div className="input-section">
+                <input
+                    type="text"
+                    placeholder="Enter ingredients (comma-separated)..."
+                    value={ingredients}
+                    onChange={(e) => setIngredients(e.target.value)}
+                    className="input-box"
+                />
+
+                <input
+                    type="text"
+                    placeholder="Enter cuisine (optional)..."
+                    value={cuisine}
+                    onChange={(e) => setCuisine(e.target.value)}
+                    className="input-box"
+                />
+
+                <select value={diet} onChange={(e) => setDiet(e.target.value)} className="dropdown">
+                    <option value="">Any</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="non-vegetarian">Non-Vegetarian</option>
+                </select>
+
+                <button onClick={handleSearch} className="search-button">Search</button>
+            </div>
+
+            <ul className="recipe-list">
                 {recipes.map((recipe, index) => (
-                    <li key={index} style={{ marginBottom: "20px", border: "1px solid #ddd", padding: "15px", borderRadius: "8px" }}>
-                        <h3>{recipe.title}</h3>
-                        {recipe.image && <img src={recipe.image} alt={recipe.title} width="200px" style={{ borderRadius: "8px" }} />}
-                        <br />
-                        <button onClick={() => handleRecipeDetails(recipe)} style={{ marginTop: "10px", padding: "8px 15px", cursor: "pointer" }}>
+                    <li key={index} className="recipe-card">
+                        <h3 className="recipe-title">{recipe.title}</h3>
+
+                        {recipe.image && <img src={recipe.image} alt={recipe.title} className="recipe-image" />}
+
+                        {/* Button is below the image */}
+                        <button onClick={() => handleRecipeDetails(recipe)} className="details-button">
                             {selectedRecipe === recipe ? "Hide Details" : "Show Details"}
                         </button>
 
                         {selectedRecipe === recipe && (
-                            <>
-                                <p><strong>Ingredients:</strong> {recipe.ingredients?.length > 0 ? recipe.ingredients.join(", ") : "Not Available"}</p>
-                                <p><strong>Instructions:</strong> {recipe.instructions?.trim() ? recipe.instructions : "Not Available"}</p>
-                                {recipe.nutrition && (
-                                    <p>
-                                        <strong>Nutrition:</strong> {recipe.nutrition.calories} kcal, 
-                                        {recipe.nutrition.protein}g Protein, 
-                                        {recipe.nutrition.fat}g Fat, 
-                                        {recipe.nutrition.carbs}g Carbs
-                                    </p>
-                                )}
-                            </>
+                            <div className="details-section">
+                                <h4>Ingredients:</h4>
+                                <ul className="details-list">
+                                    {recipe.ingredients?.length > 0
+                                        ? recipe.ingredients.map((ing, i) => <li key={i}>{ing}</li>)
+                                        : <li>Not Available</li>}
+                                </ul>
+
+                                <h4>Instructions:</h4>
+                                <ol className="details-list">
+                                    {recipe.instructions?.trim()
+                                        ? recipe.instructions.split(". ").map((step, i) => <li key={i}>{step}</li>)
+                                        : <li>Not Available</li>}
+                                </ol>
+                            </div>
                         )}
                     </li>
                 ))}
