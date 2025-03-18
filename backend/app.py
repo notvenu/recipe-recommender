@@ -24,12 +24,6 @@ def get_recipe_details(recipe_id):
             "image": data.get("image", ""),
             "ingredients": [ing["name"] for ing in data.get("extendedIngredients", [])] if data.get("extendedIngredients") else [],
             "instructions": data.get("instructions", "Instructions not available"),
-            "nutrition": {
-                "calories": next((n["amount"] for n in data.get("nutrition", {}).get("nutrients", []) if n["name"] == "Calories"), "N/A"),
-                "protein": next((n["amount"] for n in data.get("nutrition", {}).get("nutrients", []) if n["name"] == "Protein"), "N/A"),
-                "fat": next((n["amount"] for n in data.get("nutrition", {}).get("nutrients", []) if n["name"] == "Fat"), "N/A"),
-                "carbs": next((n["amount"] for n in data.get("nutrition", {}).get("nutrients", []) if n["name"] == "Carbohydrates"), "N/A")
-            }
         }
     except Exception as e:
         return {"error": f"Failed to fetch details for Recipe ID {recipe_id}: {str(e)}"}
