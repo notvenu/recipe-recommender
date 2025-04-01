@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="light-theme">
+    <nav>
+        <a href="#" class="logo">Recipe Finder</a>
+        <!-- Update the nav-buttons div -->
+        <div class="nav-buttons">
+            <button id="homeBtn" class="active"><i class="fas fa-home"></i> Home</button>
+            <button id="aboutBtn"><i class="fas fa-info-circle"></i> About</button>
+            <button id="favoritesBtn" onclick="toggleFavorites()"><i class="far fa-heart"></i> Favorites</button>
+            <button id="contactBtn"><i class="fas fa-envelope"></i> Contact Us</button>
+            <button id="authBtn"><i class="fas fa-user"></i> Login/Sign Up</button>
+            <button id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <div class="search-container">
+        <div class="search-input-group">
+            <input type="text" id="searchInput" placeholder="Search by recipe name or ingredients">
+            <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+        </div>
+        <div class="filters">
+            <select id="cuisine">
+                <option value="">All Cuisines</option>
+            </select>
+            <select id="mealType">
+                <option value="">All Courses</option>
+            </select>
+            <select id="diet">
+                <option value="">All Diets</option>
+            </select>
+            <select id="cookingTime">
+                <option value="">Any Cooking Time</option>
+                <option value="15">Under 15 mins</option>
+                <option value="30">Under 30 mins</option>
+                <option value="60">Under 1 hour</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="recipes-container" id="recipesContainer"></div>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Update Auth Modal -->
+    <div id="authModal" class="modal1">
+        <div class="modal1-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button id="loginTab" class="auth-tab active">Login</button>
+                <button id="signupTab" class="auth-tab">Sign Up</button>
+            </div>
+            <form id="loginForm" class="auth-form active">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <form id="signupForm" class="auth-form">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#"><i class="fas fa-home"></i> Home</a>
+                <a href="/html/about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/html/contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Recipe Finder. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Update script order and remove unnecessary scripts -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/script.js"></script>
+    <!-- Add this before the closing body tag -->
+    <div id="confirmModal" class="confirm-modal">
+        <div class="confirm-modal-content">
+            <h3 id="confirmMessage"></h3>
+            <div class="confirm-modal-buttons">
+                <button class="confirm-btn yes" id="confirmYes">Yes</button>
+                <button class="confirm-btn no" id="confirmNo">No</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

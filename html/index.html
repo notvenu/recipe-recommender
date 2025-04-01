@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Finder - Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <nav>
+        <a href="home.html" class="logo">Recipe Finder</a>
+        <div class="nav-buttons">
+            <button id="homeBtn" class="active"><i class="fas fa-home"></i> Home</button>
+            <button id="aboutBtn"><i class="fas fa-info-circle"></i> About</button>
+            <button id="contactBtn"><i class="fas fa-envelope"></i> Contact Us</button>
+            <button id="authBtn"><i class="fas fa-user"></i> Login / Sign Up</button>
+            <button id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <main class="landing-container">
+        <div class="hero-section">
+            <h1>Discover Your Next Favorite Recipe</h1>
+            <p>Explore thousands of delicious recipes, save your favorites, and start your culinary journey today!</p>
+            <div class="cta-buttons">
+                <button class="cta-btn auth-btn" id="heroAuthBtn">Login / Sign Up</button>
+                <button class="cta-btn skip-btn" onclick="window.location.href='home.html'">Skip & Get Started</button>
+            </div>
+        </div>
+
+        <div class="features-section">
+            <h2>Why Choose Recipe Finder?</h2>
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Easy Search</h3>
+                    <p>Find recipes by name, ingredients, or cuisine type</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Save Favorites</h3>
+                    <p>Keep track of recipes you love</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-filter"></i>
+                    <h3>Smart Filters</h3>
+                    <p>Filter by cooking time, diet, and course type</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-members">
+                    <h3>K.Venu Bharghav Jishith	23BCB7175</h3>	
+                    <h3>A.Anjana Srinivas	23BCB7279</h3>
+                    <h3>V.Rohith 23BCB7281</h3>
+                    <h3>G.Vinay 23BCB7286</h3>
+                    <h3>Ch.Souri Krishna 23BCB7266</h3>
+                    <h3>M.Kiran Kumar 23BCB7287</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="authModal" class="modal1">
+        <div class="modal1-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button id="loginTab" class="auth-tab active">Login</button>
+                <button id="signupTab" class="auth-tab">Sign Up</button>
+            </div>
+            <form id="loginForm" class="auth-form active">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <form id="signupForm" class="auth-form">
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/html/home.html"><i class="fas fa-home"></i> Home</a>
+                <a href="/html/about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/html/contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Recipe Finder. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="/js/utils.js"></script>
+    <script src="/js/script.js"></script>
+    <!-- Add before closing body tag -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Confirm Action</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirmYes" class="btn-primary">Yes</button>
+                <button id="confirmNo" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Recipe Finder</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="light-theme">
+    <nav>
+        <a href="index.html" class="logo">Recipe Finder</a>
+        <!-- Update the nav-buttons div -->
+        <div class="nav-buttons">
+            <button id="homeBtn"><i class="fas fa-home"></i> Home</button>
+            <button id="aboutBtn"><i class="fas fa-info-circle"></i> About</button>
+            <button id="contactBtn" class="active"><i class="fas fa-envelope"></i> Contact Us</button>
+            <button id="authBtn"><i class="fas fa-user"></i> Login/Sign Up</button>
+            <button id="themeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <div class="contact-header">
+            <h1>Contact Us</h1>
+            <p>Have questions? We'd love to hear from you.</p>
+        </div>
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Name</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/html/home.html"><i class="fas fa-home"></i> Home</a>
+                <a href="/html/about.html"><i class="fas fa-info-circle"></i> About</a>
+                <a href="/html/contact.html"><i class="fas fa-envelope"></i> Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/yourusername" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://instagram.com/yourusername" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Recipe Finder. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="/js/utils.js"></script>
+</body>
+</html>
